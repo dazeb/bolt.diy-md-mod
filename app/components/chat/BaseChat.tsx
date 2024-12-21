@@ -28,6 +28,7 @@ import { SpeechRecognitionButton } from '~/components/chat/SpeechRecognition';
 import type { IProviderSetting, ProviderInfo } from '~/types/model';
 import { ScreenshotStateManager } from './ScreenshotStateManager';
 import { toast } from 'react-toastify';
+import { UrlInput } from './URLInput';
 
 const TEXTAREA_MIN_HEIGHT = 76;
 
@@ -492,6 +493,15 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       <IconButton title="Upload file" className="transition-all" onClick={() => handleFileUpload()}>
                         <div className="i-ph:paperclip text-xl"></div>
                       </IconButton>
+                      <UrlInput
+                        onSubmit={(url: any) => {
+                          // Handle the URL submission here
+                          console.log('URL submitted:', url);
+                          // eslint-disable-next-line @blitz/lines-around-comment
+                          // You can add your URL processing logic here
+                        }}
+                        disabled={isStreaming}
+                      />
                       <IconButton
                         title="Enhance prompt"
                         disabled={input.length === 0 || enhancingPrompt}
